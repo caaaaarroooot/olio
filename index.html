@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smooth Image and Footer Transition</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Index</title>
+    <link rel="stylesheet" href="./tem1/style.css">
     <script src="https://kit.fontawesome.com/6af4f65b38.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="./tem1/style2.css">
 
     <style>
         body {
@@ -247,25 +247,26 @@
     
     <!-- 상단 배경 및 텍스트 -->
     <div class="container">
-        <img src="newjeans.jpeg" alt="Background Image" id="image" class="img1">
+        <img src="./img/newjeans.jpeg" alt="Background Image" id="image" class="img1">
         <div class="text" id="text">NEWJEANS</div>
-        <div style="margin-top: 600px; display: flex; flex-direction: column; align-items: center; width: 100vw;">
+        <div style="margin-top: 550px; display: flex; flex-direction: column; align-items: center; width: 100vw;">
             <div id="a" style="text-align: center; font-size: 24px; border: 1px solid black; background-color: rgb(220, 242, 251); margin-bottom: 30px; width: 12vw; border-radius: 15px; padding: 20px; border: 3px solid rgb(75, 161, 195);">
-                본명: 컨셉 
+                그룹 컨셉 
             </div>
+            <div style="height: 10px; margin: 0;"></div>
             <div id="b" style="text-align: center; font-size: 24px; border: 1px solid black; background-color: rgb(220, 242, 251); width: 70vw; border-radius: 15px; padding: 20px; border: 3px solid rgb(75, 161, 195);">
                 <p>5명의 멤버가 모여 어딘가 자유분방하면서도 결합력 있는 독특한 퍼포먼스를 선보인다.<br> 소녀들이 
                     <span style="color: rgb(53, 43, 246);">'재밌게 즐긴다'</span> 란 표현이 어울리는 뉴진스만의 청춘 하이틴스러운 컨셉은 
                     <span style="color: rgb(53, 43, 246);">'자연스럽다'</span> 라는 느낌을 주어, <br> 뉴진스가 많은 대중들에게 사랑 받는 데에 크게 기여한다.</p>
             </div>
-        
+            <div style="height: 80px; margin: 0;"></div>
             <div class="music-container" id="music-container">
                 <div class="Music-player">
-                    <img id="song-img" src="super.jpg" class="song-img" alt="Song Image">
+                    <img id="song-img" src="./img/super.jpg" class="song-img" alt="Song Image">
                     <h1 id="song-title">NEWJEANS</h1>
                     <p id="song-artist">supernatural</p>
                     <audio id="song">
-                        <source src="supernatural.mp3" type="audio/mpeg">
+                        <source src="./tem1/supernatural.mp3" type="audio/mpeg">
                     </audio>
                     <input type="range" value="0" id="progress">
                     <div class="controls">
@@ -281,23 +282,23 @@
     <div class="gallery-container" id="gallery-container" style="margin-top: 250px;">
         <div class="gallery">
             <div class="gallery-item" onclick="openModal(0)">
-                <img src="attention1.jpg" alt="뉴진스 사진 1">
+                <img src="./img/attention1.jpg" alt="뉴진스 사진 1">
                 <div class="album-title">Attention</div>
             </div>
             <div class="gallery-item" onclick="openModal(4)">
-                <img src="Ditto1.jpg" alt="뉴진스 사진 2">
+                <img src="./img/Ditto1.jpg" alt="뉴진스 사진 2">
                 <div class="album-title">Ditto</div>
             </div>
             <div class="gallery-item" onclick="openModal(8)">
-                <img src="OMG1.jpg" alt="뉴진스 사진 3">
+                <img src="./img/OMG1.jpg" alt="뉴진스 사진 3">
                 <div class="album-title">OMG</div>
             </div>
             <div class="gallery-item" onclick="openModal(11)">
-                <img src="How1.jpg" alt="How Sweet">
+                <img src="./img/How1.jpg" alt="How Sweet">
                 <div class="album-title">How Sweet</div>
             </div>
             <div class="gallery-item" onclick="openModal(15)">
-                <img src="B1.jpg" alt="Bubble Gum" >
+                <img src="./img/B1.jpg" alt="Bubble Gum" >
                 <div class="album-title">Bubble Gum</div>
             </div>
         </div>
@@ -326,28 +327,28 @@
 
     <script>
         const images = [
-            "./attention1.jpg", //0
-            "attention2.jpg",
-            "attention3.jpg",
-            "attention4.jpg",
+            "./img/attention1.jpg", //0
+            "./img/attention2.jpg",
+            "./img/attention3.jpg",
+            "./img/attention4.jpg",
 
-            "Ditto1.jpg",  //4
-            "Ditto2.jpg",
-            "Ditto3.jpg",
-            "Ditto4.jpg",
+            "./img/Ditto1.jpg",  //4
+            "./img/Ditto2.jpg",
+            "./img/Ditto3.jpg",
+            "./img/Ditto4.jpg",
 
-            "OMG1.jpg", //8
-            "OMG2.jpg",
-            "OMG3.jpg",
+            "./img/OMG1.jpg", //8
+            "./img/OMG2.jpg",
+            "./img/OMG3.jpg",
 
-            "How1.jpg", //11
-            "How2.jpg",
-            "How3.jpg",
-            "How4.jpg",
+            "./img/How1.jpg", //11
+            "./img/How2.jpg",
+            "./img/How3.jpg",
+            "./img/How4.jpg",
 
-            "B1.jpg", //15
-            "B2.jpg",
-            "B3.jpg"
+            "./img/B1.jpg", //15
+            "./img/B2.jpg",
+            "./img/B3.jpg"
 
         ];
         let currentImageIndex = 0;
@@ -424,20 +425,20 @@
                 {
                     title: "Supernatural",
                     artist: "NEWJEANS",
-                    src: "supernatural.mp3",
-                    img: "super.jpg"
+                    src: "./tem1/supernatural.mp3",
+                    img: "./img/super.jpg"
                 },
                 {
                     title: "Attention",
                     artist: "NEWJEANS",
-                    src: "attention.mp3",
-                    img: "Hype Boy.jpg"
+                    src: "./tem1/attention.mp3",
+                    img: "./img/Hype Boy.jpg"
                 },
                 {
                     title: "Hype Boy",
                     artist: "NEWJEANS",
-                    src: "hypeboy.mp3",
-                    img: "Hype Boy.jpg"
+                    src: "./tem1/hypeboy.mp3",
+                    img: "./img/Hype Boy.jpg"
                 }
             ];
         
@@ -511,24 +512,24 @@
             <h1>PROFILE</h1>
             <div class="profile-cards">
                 <div class="card">
-                    <img src="hanni.jpg" alt="Hanni">
-                    <button class="gallery-btn"><a href="./hanni.html" target="_blank">Hanni</a></button>
+                    <img src="./img/hanni.jpg" alt="Hanni">
+                    <button class="gallery-btn"><a href="./tem1/hanni.html" target="_blank">Hanni</a></button>
                 </div>
                 <div class="card">
-                    <img src="mingi.jpg" alt="Mingi">
-                    <button class="gallery-btn"><a href="minji.html" target="_blank">Mingi</a></button>
+                    <img src="./img/mingi.jpg" alt="Mingi">
+                    <button class="gallery-btn"><a href="./tem1/minji.html" target="_blank">Minji</a></button>
                 </div>
                 <div class="card">
-                    <img src="Danielle.jpg" alt="Danielle">
-                    <button class="gallery-btn"><a href="danielle.html" target="_blank">Danielle</a></button>
+                    <img src="./img/Danielle.jpg" alt="Danielle">
+                    <button class="gallery-btn"><a href="./tem1/danielle.html" target="_blank">Danielle</a></button>
                 </div>
                 <div class="card">
-                    <img src="Haerin.jpg" alt="Haerin">
-                    <button class="gallery-btn"><a href="haerin.html" target="_blank">Haerin</a></button>
+                    <img src="./img/Haerin.jpg" alt="Haerin">
+                    <button class="gallery-btn"><a href="./tem1/haerin.html" target="_blank">Haerin</a></button>
                 </div>
                 <div class="card">
-                    <img src="H.jpg" alt="Hyein">
-                    <button class="gallery-btn"><a href="haein.html" target="_blank">Hyein</a></button>
+                    <img src="./img/H.jpg" alt="Hyein">
+                    <button class="gallery-btn"><a href="./tem1/haein.html" target="_blank">Hyein</a></button>
                 </div>
             </div>
         </div> 

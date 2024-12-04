@@ -1,0 +1,124 @@
+/* 초기화: 모든 요소의 기본 여백과 패딩 제거, 박스 모델 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Google Fonts 적용 */
+    box-sizing: border-box; /* 모든 요소에 박스 모델 적용 */
+}
+
+/* CSS 변수 정의: 주요 색상 및 그림자 색상 */
+:root {
+    --main-color: #f8f7f7; /* 주 색상 */
+    --shadow-color: rgba(249, 249, 251, 0.22); /* 그림자 색상 */
+}
+
+/* 전체 페이지 컨테이너 설정 */
+.container {
+    width: 100%; /* 가로 전체 */
+    height: 100vh; /* 세로 전체 */
+    background: #333; /* 어두운 배경색 */
+    display: flex; /* 중앙 정렬을 위해 Flexbox 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+}
+
+/* 음악 플레이어의 전체 스타일 */
+.Music-player {
+    background: #050505; /* 어두운 배경 */
+    width: 400px; /* 고정된 너비 */
+    padding: 25px 35px; /* 내부 여백 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+/* 네비게이션 버튼 (원형) 스타일 */
+nav .circle {
+    border-radius: 50%; /* 원형 */
+    width: 40px; /* 고정된 너비 */
+    height: 40px; /* 고정된 높이 */
+    line-height: 40px; /* 텍스트 수직 정렬 */
+    background: #787373; /* 회색 배경 */
+    color: var(--main-color); /* 주 색상 */
+    box-shadow: 0 5px 10px var(--shadow-color); /* 그림자 효과 */
+}
+
+/* 곡 이미지 스타일 */
+.song-img {
+    width: 220px; /* 고정된 너비 */
+    border-radius: 50%; /* 둥근 이미지 */
+    border: 8px solid #fff; /* 흰색 테두리 */
+    box-shadow: 0 10px 60px var(--shadow-color); /* 그림자 효과 */
+}
+
+/* 곡 제목 스타일 */
+.Music-player h1 {
+    font-size: 20px; /* 폰트 크기 */
+    font-weight: 400; /* 보통 굵기 */
+    color: #fcf2f2; /* 흰색 글자 */
+    margin-top: 20px; /* 상단 여백 */
+}
+
+/* 곡 정보(아티스트 등) 스타일 */
+.Music-player p {
+    font-size: 14px; /* 폰트 크기 */
+    color: #fbf9f9; /* 흰색 글자 */
+}
+
+/* 진행 바 스타일 */
+#progress {
+    -webkit-appearance: none; /* 기본 브라우저 스타일 제거 (크롬) */
+    width: 100%; /* 가로 전체 */
+    height: 6px; /* 진행 바 높이 */
+    background: var(--main-color); /* 주 색상 */
+    border-radius: 4px; /* 둥근 모서리 */
+    cursor: pointer; /* 마우스 커서 스타일 */
+    margin: 40px 0; /* 상하 여백 */
+}
+
+/* 진행 바 조작 핸들 스타일 (크롬) */
+#progress::-webkit-slider-thumb {
+    -webkit-appearance: none; /* 기본 브라우저 스타일 제거 */
+    background: var(--main-color); /* 주 색상 */
+    width: 30px; /* 핸들 크기 */
+    height: 30px; /* 핸들 크기 */
+    border-radius: 50%; /* 둥근 모양 */
+    border: 8px solid #fff; /* 흰색 테두리 */
+    box-shadow: 0 5px 5px var(--shadow-color); /* 그림자 효과 */
+}
+
+/* 진행 바 조작 핸들 스타일 (파이어폭스) */
+#progress::-moz-range-thumb {
+    background: var(--main-color); /* 주 색상 */
+    width: 30px; /* 핸들 크기 */
+    height: 30px; /* 핸들 크기 */
+    border-radius: 50%; /* 둥근 모양 */
+    border: 8px solid #0e0e0e; /* 흰색 테두리 */
+    box-shadow: 0 5px 5px var(--shadow-color); /* 그림자 효과 */
+}
+
+/* 컨트롤 버튼(뒤로, 재생/일시정지, 앞으로) 스타일 */
+.controls {
+    display: flex; /* 버튼 정렬을 위해 Flexbox 사용 */
+    justify-content: center; /* 버튼을 가운데 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+}
+
+/* 개별 버튼 스타일 */
+.controls div {
+    width: 60px; /* 고정된 너비 */
+    height: 60px; /* 고정된 높이 */
+    margin: 20px; /* 버튼 간격 */
+    background: #515151; /* 흰색 배경 */
+    display: inline-flex; /* 내부 콘텐츠 정렬을 위해 Inline-Flex 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    border-radius: 50%; /* 둥근 버튼 */
+    color: var(--main-color); /* 주 색상 */
+    box-shadow: 0 10px 20px var(--shadow-color); /* 그림자 효과 */
+    cursor: pointer; /* 클릭 가능한 커서 */
+}
+
+/* 재생/일시정지 버튼 강조 스타일 */
+.controls div:nth-child(2) {
+    transform: scale(1.5); /* 크기 1.5배 확대 */
+    background: var(--main-color); /* 주 색상 배경 */
+    color: #0b0b0b; /* 흰색 텍스트 */
+}

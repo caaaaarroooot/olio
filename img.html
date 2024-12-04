@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Image and Text Transition</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* 페이지에서 스크롤바 제거 */
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            transition: transform 1s ease-in-out, height 1s ease-in-out; /* 자연스러운 이동 */
+            transform-origin: top; /* 변환 기준을 위쪽으로 설정 */
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: white;
+            cursor: pointer;
+            transition: transform 1s ease-in-out, font-size 0.5s ease-in-out; /* 부드러운 텍스트 이동 */
+        }
+        .fixed {
+            top: 10%; /* 자연스러운 위치 조정 */
+            left: 50%;
+            transform: translate(-50%, 0);
+            font-size: 70px; /* 텍스트 크기 줄임 */
+        }
+        .small {
+            transform: scale(1.2); /* 이미지를 확대하면서 전환 */
+            height: 220px;
+            object-fit: cover; /* 비율 유지 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/newjeans.jpeg" alt="Image" id="image">
+        <div class="text" id="text"><span style="font: bold 1em/1em georgia, serif;">NEWJEANS</span></div>
+    </div>
+
+    <script>
+        const text = document.getElementById('text');
+        const img = document.getElementById('image');
+
+        text.addEventListener('click', () => {
+            img.classList.toggle('small'); // 이미지 확대/축소
+            text.classList.toggle('fixed'); // 텍스트 위치 고정
+        });
+    </script>
+</body>
+</html>

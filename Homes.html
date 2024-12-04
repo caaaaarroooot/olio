@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/6af4f65b38.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
+        }
+
+        /* 상단 컨테이너 */
+
+        .container {
+    position: relative; /* 부모 요소의 위치를 기준으로 */
+    overflow: hidden; /* 자식 요소가 넘어가지 않도록 */
+    height: 100vh; /* 높이를 고정 */
+    display: flex; /* 컨텐츠를 중앙 정렬 */
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(188, 218, 230); /* 배경 색상 */
+}
+
+
+        img {
+            width: 100%;
+            height: auto;
+            transition: transform 1s ease-in-out, height 1s ease-in-out;
+            transform-origin: top;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: white;
+            cursor: pointer;
+            transition: transform 1s ease-in-out, font-size 0.5s ease-in-out;
+        }
+
+        .fixed {
+            top: 80px; /* 텍스트가 작아질 때 위치 조정 */
+            left: 50%;
+            transform: translate(-50%, 0);
+            font-size: 70px;
+        }
+
+        .small {
+            transform: scale(1.2); /* 이미지를 확대하면서 전환 */
+            top: 0;
+            height: 220px;
+            object-fit: cover; /* 비율 유지 */
+        }
+
+        /* 사진 갤러리 영역 */
+        .gallery-container {
+            background-color: rgb(188, 218, 230); /* 파란 배경 */
+            padding: 20px 0; /* 여백 조정 */
+            display: none; /* 첫 화면에서는 사진 숨김 */
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* 사진 간격 */
+            margin: 60px auto; /* 위쪽 간격 조정 */
+        }
+
+        .gallery-item {
+            width: 200px; /* 사진 크기 */
+            height: 200px;
+            border-radius: 15px; /* 둥근 모서리 */
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 비율 유지 */
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.1); /* 호버 시 확대 */
+        }
+
+        /* 앨범 제목 */
+        .album-title {
+            position: absolute;
+            bottom: 10px; /* 텍스트를 사진의 아래에 위치 */
+            left: 50%;
+            transform: translateX(-50%); /* 가운데 정렬 */
+            font-size: 18px;
+            font-weight: bold;
+            color: white; /* 글자 색상 */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* 그림자 추가 */
+            background-color: rgba(0, 0, 0, 0.4); /* 배경 투명도 */
+            padding: 5px;
+            white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+        }
+
+        /* 푸터 영역 */
+        footer {
+            position: fixed;
+            bottom: -100%; /* 첫 화면에서 완전히 숨김 */
+            width: 100%;
+            background-color: rgb(131, 195, 220); /* 이전 파란색 스타일 유지 */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        footer nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        footer nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        footer nav a:hover {
+            background-color: rgb(188, 218, 230);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 상단 배경 및 텍스트 -->
+    <!-- <div class="container">
+        <img src="newjeans.jpeg" alt="Background Image" id="image">
+        <div class="text" id="text">NEWJEANS</div>
+    </div> -->
+    <div class="container">
+        <div class="Music-player">
+            <!-- 곡 이미지 -->
+            <img id="song-img" src="home/image.jpeg" class="song-img" alt="Song Image">
+            
+            <!-- 곡 제목 및 아티스트 -->
+            <h1 id="song-title">NEWJEANS</h1>
+            <p id="song-artist">supernatural</p>
+    
+            <!-- 오디오 파일 -->
+            <audio id="song">
+                <source src="supernatural.mp3" type="audio/mpeg">
+            </audio>
+            
+            <!-- 재생 진행 바 -->
+            <input type="range" value="0" id="progress">
+    
+            <!-- 컨트롤 버튼 -->
+            <div class="controls">
+                <!-- 이전 곡 버튼 -->
+                <div onclick="prevSong()"><i class="fa-solid fa-backward"></i></div>
+                <!-- 재생/일시 정지 버튼 -->
+                <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlicon"></i></div>
+                <!-- 다음 곡 버튼 -->
+                <div onclick="nextSong()"><i class="fa-solid fa-forward"></i></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 재생할 곡 목록 (플레이리스트)
+        const playlist = [
+            {
+                title: "Supernatural",
+                artist: "NEWJEANS",
+                src: "supernatural.mp3",
+                img: "super.jpg"
+            },
+            {
+                title: "Attention",
+                artist: "NEWJEANS",
+                src: "attention.mp3",
+                img: "Hype Boy.jpg"
+            },
+            {
+                title: "Hype Boy",
+                artist: "NEWJEANS",
+                src: "hypeboy.mp3",
+                img: "Hype Boy.jpg"
+            }
+        ];
+    
+        let currentIndex = 0; // 현재 재생 중인 곡의 인덱스
+    
+        // DOM 요소 참조
+        const song = document.getElementById("song");
+        const progress = document.getElementById("progress");
+        const ctrlicon = document.getElementById("ctrlicon");
+        const songTitle = document.getElementById("song-title");
+        const songArtist = document.getElementById("song-artist");
+        const songImg = document.getElementById("song-img");
+    
+        // 곡을 로드하는 함수
+        function loadSong(index) {
+            const track = playlist[index];
+            song.src = track.src;
+            songTitle.textContent = track.title;
+            songArtist.textContent = track.artist;
+            songImg.src = track.img;
+            progress.value = 0; // 진행 바 초기화
+            song.load(); // 새 곡 로드
+        }
+    
+        // 재생/일시정지 기능
+        function playPause() {
+            if (song.paused) {
+                song.play(); // 음악 재생
+                ctrlicon.classList.add("fa-pause");
+                ctrlicon.classList.remove("fa-play");
+            } else {
+                song.pause(); // 음악 일시정지
+                ctrlicon.classList.add("fa-play");
+                ctrlicon.classList.remove("fa-pause");
+            }
+        }
+    
+        // 다음 곡 재생
+        function nextSong() {
+            currentIndex = (currentIndex + 1) % playlist.length; // 다음 곡으로 이동 (순환)
+            loadSong(currentIndex);
+            song.play(); // 자동 재생
+            ctrlicon.classList.add("fa-pause");
+            ctrlicon.classList.remove("fa-play");
+        }
+    
+        // 이전 곡 재생
+        function prevSong() {
+            currentIndex = (currentIndex - 1 + playlist.length) % playlist.length; // 이전 곡으로 이동 (순환)
+            loadSong(currentIndex);
+            song.play(); // 자동 재생
+            ctrlicon.classList.add("fa-pause");
+            ctrlicon.classList.remove("fa-play");
+        }
+    
+        // 진행 바와 연결
+        song.addEventListener("timeupdate", () => {
+            progress.value = song.currentTime; // 현재 재생 위치 업데이트
+            progress.max = song.duration; // 진행 바 최대값 설정
+        });
+    
+        progress.addEventListener("input", () => {
+            song.currentTime = progress.value; // 진행 바 값으로 음악 위치 변경
+        });
+    
+        // 현재 곡 로드
+        loadSong(currentIndex);
+    </script>
+
+    <!-- 가운데 사진 갤러리 -->
+    <div class="gallery-container" id="gallery-container">
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://newjeans.kr/imgs/howsweet/photo/NJ_HowSweet_35.jpg" alt="뉴진스 사진 1">
+                <div class="album-title">Attention</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://newjeans.kr/imgs/howsweet/photo/NJ_HowSweet_36.jpg" alt="뉴진스 사진 2">
+                <div class="album-title">Ditto</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://newjeans.kr/imgs/howsweet/photo/NJ_HowSweet_37.jpg" alt="뉴진스 사진 3">
+                <div class="album-title">OMG</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://newjeans.kr/imgs/howsweet/photo/NJ_HowSweet_38.jpg" alt="뉴진스 사진 4">
+                <div class="album-title">How Sweet</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://newjeans.kr/imgs/howsweet/photo/NJ_HowSweet_39.jpg" alt="뉴진스 사진 5">
+                <div class="album-title">Bubble Gum</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 하단 푸터 -->
+    <footer id="footer">
+        <nav>
+            <a href="https://www.youtube.com/channel/UCMki_UkHb4qSc0qyEcOHHJw" target="_blank">Youtube</a>
+            <a href="https://www.instagram.com/newjeans_official/" target="_blank">Instagram</a>
+            <a href="https://x.com/NewJeans_twt" target="_blank">X(Twitter)</a>
+            <a href="https://www.facebook.com/official.newjeans" target="_blank">Facebook</a>
+        </nav>
+        <p>&copy; 2024 NEWJEANS 팬 사이트</p>
+    </footer>
+
+    <script>
+        const text = document.getElementById('text');
+        const img = document.getElementById('image');
+        const footer = document.getElementById("footer");
+        const galleryContainer = document.getElementById("gallery-container");
+
+        let lastScroll = 0; // 마지막 스크롤 위치 저장
+
+        // 텍스트 클릭 시 전환 효과
+        text.addEventListener('click', () => {
+            img.classList.toggle('small');
+            text.classList.toggle('fixed');
+            galleryContainer.style.display = "block"; // 사진 갤러리 보이기
+            footer.style.bottom = "0"; // 푸터 보이기
+        });
+
+        // 스크롤 이벤트에 따른 푸터 동작
+        window.addEventListener("scroll", () => {
+            const currentScroll = window.pageYOffset;
+
+            // 스크롤 방향 따라 footer 동작
+            if (currentScroll > lastScroll) {
+                footer.style.transform = "translateY(100%)"; // 아래로 숨김
+            } else {
+                footer.style.transform = "translateY(0)"; // 위로 나타남
+            }
+
+            lastScroll = currentScroll; // 현재 스크롤 위치 저장
+        });
+    </script>
+</body>
+</html>

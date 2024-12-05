@@ -28,7 +28,9 @@
     width: 400px; /* 고정된 너비 */
     padding: 25px 35px; /* 내부 여백 */
     text-align: center; /* 텍스트 가운데 정렬 */
+    border-radius: 15px; /* 모서리를 둥글게 설정 (값은 원하는 정도에 맞게 조정) */
 }
+
 /* 네비게이션 버튼 (원형) 스타일 */
 nav .circle {
     border-radius: 50%; /* 원형 */

@@ -9,9 +9,14 @@
     <link rel="stylesheet" href="./tem1/style2.css">
 
     <style>
+        @font-face {
+            font-family: 'BlackHanSans';
+            src: url('./tem1/Black_Han_Sans/BlackHanSans-Regular.ttf');
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'BlackHanSns',Arial;
             overflow-x: hidden;
             overflow: hidden; /*기본적으로 스크롤 비활성화 */
             height: 100vh; /* 첫 화면 높이를 고정 */
@@ -42,6 +47,18 @@
             font-size: 100px;
             color: white;
             cursor: pointer;
+            transition: transform 1s ease-in-out, font-size 0.5s ease-in-out;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: white;
+            cursor: pointer;
+            font-family: 'BlackHanSans', sans-serif; /* 여기 추가 */
             transition: transform 1s ease-in-out, font-size 0.5s ease-in-out;
         }
 
